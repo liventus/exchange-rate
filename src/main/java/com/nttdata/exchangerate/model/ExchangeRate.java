@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 public class ExchangeRate {
     private Currency fromCurrency;
     private Currency toCurrency;
-    private BigDecimal rate;
+    private BigDecimal amount;
 
 
     public Currency getFromCurrency() {
@@ -25,11 +25,20 @@ public class ExchangeRate {
         this.toCurrency = toCurrency;
     }
 
-    public BigDecimal getRate() {
-        return rate;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setRate(BigDecimal rate) {
-        this.rate = rate;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return "ExchangeRate{" +
+            "fromCurrency=" + fromCurrency +
+            ", toCurrency=" + toCurrency +
+            ", rate=" + amount +
+            '}';
     }
 }

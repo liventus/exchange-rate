@@ -4,13 +4,15 @@ package com.nttdata.exchangerate.dto;
 
 import jakarta.persistence.*;
 
-
+import java.util.Objects;
 
 
 @Entity
 public class Memory {
   @Id
   private String clave;
+
+  @Column(length = 5000)
   private String valor;
 
   public String getClave() {

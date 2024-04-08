@@ -1,11 +1,12 @@
 package com.nttdata.exchangerate.dto;
 
 
+import java.math.BigDecimal;
 import java.util.Map;
 
-public class ModelExternResponse {
+public class ModelExternResponsePair {
 
-    public String base_code;
+
     public String result;
     public String documentation;
     public String terms_of_use;
@@ -13,16 +14,10 @@ public class ModelExternResponse {
     public String time_last_update_utc;
     public int time_next_update_unix;
     public String time_next_update_utc;
-
-    public Map<String,String> conversion_rates;
-
-  public Map<String, String> getConversion_rates() {
-    return conversion_rates;
-  }
-
-  public void setConversion_rates(Map<String, String> conversion_rates) {
-    this.conversion_rates = conversion_rates;
-  }
+    public String base_code;
+    public String target_code;
+    public BigDecimal conversion_rate;
+    public BigDecimal conversion_result;
 
   public String getResult() {
     return result;
@@ -88,20 +83,44 @@ public class ModelExternResponse {
     this.base_code = base_code;
   }
 
+  public String getTarget_code() {
+    return target_code;
+  }
 
+  public void setTarget_code(String target_code) {
+    this.target_code = target_code;
+  }
 
+  public BigDecimal getConversion_rate() {
+    return conversion_rate;
+  }
+
+  public void setConversion_rate(BigDecimal conversion_rate) {
+    this.conversion_rate = conversion_rate;
+  }
+
+  public BigDecimal getConversion_result() {
+    return conversion_result;
+  }
+
+  public void setConversion_result(BigDecimal conversion_result) {
+    this.conversion_result = conversion_result;
+  }
 
   @Override
   public String toString() {
-    return "ModelExternResponse{" +
-        "base_code='" + base_code + '\'' +
-        ", result='" + result + '\'' +
+    return "ModelExternResponsePair{" +
+        "result='" + result + '\'' +
         ", documentation='" + documentation + '\'' +
         ", terms_of_use='" + terms_of_use + '\'' +
         ", time_last_update_unix=" + time_last_update_unix +
         ", time_last_update_utc='" + time_last_update_utc + '\'' +
         ", time_next_update_unix=" + time_next_update_unix +
         ", time_next_update_utc='" + time_next_update_utc + '\'' +
+        ", base_code='" + base_code + '\'' +
+        ", target_code='" + target_code + '\'' +
+        ", conversion_rate=" + conversion_rate +
+        ", conversion_result=" + conversion_result +
         '}';
   }
 }
