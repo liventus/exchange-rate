@@ -1,6 +1,17 @@
 package com.nttdata.exchangerate.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Map;
+
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 
 public class ResponsePostConsulting {
   private String status;
@@ -10,30 +21,4 @@ public class ResponsePostConsulting {
   private ModelExternResponsePair detail;
 
 
-
-
-
-  public String getStatus() {
-    return status;
-  }
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public ModelExternResponsePair getDetail() {
-    return detail;
-  }
-
-  public void setDetail(ModelExternResponsePair detail) {
-    this.detail = detail;
-  }
 }

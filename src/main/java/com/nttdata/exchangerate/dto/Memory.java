@@ -3,11 +3,18 @@ package com.nttdata.exchangerate.dto;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Objects;
 
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
+@Builder
 public class Memory {
   @Id
   private String clave;
@@ -15,19 +22,5 @@ public class Memory {
   @Column(length = 5000)
   private String valor;
 
-  public String getClave() {
-    return clave;
-  }
 
-  public void setClave(String clave) {
-    this.clave = clave;
-  }
-
-  public String getValor() {
-    return valor;
-  }
-
-  public void setValor(String valor) {
-    this.valor = valor;
-  }
 }

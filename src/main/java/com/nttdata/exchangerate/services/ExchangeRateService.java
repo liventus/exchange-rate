@@ -1,7 +1,6 @@
 package com.nttdata.exchangerate.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nttdata.exchangerate.dto.Memory;
 import com.nttdata.exchangerate.dto.ModelExternResponsePair;
@@ -10,14 +9,12 @@ import com.nttdata.exchangerate.dto.ValorMemory;
 import com.nttdata.exchangerate.infraestructura.ApiClient;
 import com.nttdata.exchangerate.model.ExchangeRate;
 import com.nttdata.exchangerate.repositoryMemory.ObjetRepositoryMemory;
-import org.apache.coyote.Response;
+import com.nttdata.exchangerate.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
-import java.io.IOException;
 import java.util.*;
 
 
@@ -30,59 +27,49 @@ public class ExchangeRateService {
   private ObjetRepositoryMemory objetRepository;
 
   @Autowired
-  public ApiClient apiClientw;
+  public ApiClient apiClient;
 
   public void saveExchangeRate(ValorMemory valorMemory) {
-    Memory memory = new Memory();
-    memory.setClave(valorMemory.getBaseCode());
-    memory.setValor(valorMemory.toString());
+    Memory memory = Memory.builder().clave(valorMemory.getBaseCode()).valor(valorMemory.toString()).build();
     objetRepository.save(memory);
   }
 
   public List<Memory> getAllMemory() {
-
-
     return objetRepository.findAll();
   }
 
 
   public Object getDataCurrencyString(String exchangeRate) {
-    System.out.println("1");
-    return apiClientw.getConversionsAll(exchangeRate);
+    return apiClient.getConversionsAll(exchangeRate);
   }
 
   public ResponsePostConsulting getDataCurrencyAndSave(ExchangeRate exchangeRate) {
-    System.out.println("1");
     String ValueCodeH2 = exchangeRate.getFromCurrency().getCode()
-        + "/" + exchangeRate.getToCurrency().getCode()
-        + "/" + exchangeRate.getAmount();
-    Date date = new Date();
-    long unixTimestamp = date.getTime();
+        + Constants.CONCAT_CLAVE + exchangeRate.getToCurrency().getCode()
+        + Constants.CONCAT_CLAVE + exchangeRate.getAmount();
     Optional<Memory> optionalMemory = objetRepository.findById(ValueCodeH2);
     if (optionalMemory.isEmpty()) {
-      ModelExternResponsePair responseApi = converterJsonDto(apiClientw.getConversionsPars(exchangeRate.getFromCurrency().getCode(), exchangeRate.getToCurrency().getCode(), exchangeRate.getAmount()));
-      Memory memory = new Memory();
-      memory.setValor(responseApi.toString());
-      memory.setClave(ValueCodeH2);
+      ModelExternResponsePair responseApi = converterJsonDto(apiClient.getConversionsPars(exchangeRate.getFromCurrency().getCode(), exchangeRate.getToCurrency().getCode(), exchangeRate.getAmount()));
+      Memory memory = Memory.builder().valor(responseApi.toString()).clave(ValueCodeH2).build();
       objetRepository.save(memory);
-      ResponsePostConsulting responsePostConsulting = new ResponsePostConsulting();
-      responsePostConsulting.setStatus(HttpHeaders.ACCEPT);
-      responsePostConsulting.setDescription("consulta nueva exitosa");
-      responsePostConsulting.setDetail(responseApi);
-      return responsePostConsulting;
+      return ResponsePostConsulting
+          .builder()
+          .status(HttpHeaders.ACCEPT)
+          .description(Constants.MESSAGE_NUEVO)
+          .detail(responseApi)
+          .build();
     } else {
       ResponsePostConsulting responsePostConsulting2 = new ResponsePostConsulting();
       responsePostConsulting2.setStatus(HttpHeaders.ACCEPT);
-      responsePostConsulting2.setDescription("consulta ya existe, y se extraido de la memoria");
+      responsePostConsulting2.setDescription(Constants.MESSAGE_MEMORIA);
       Memory memory = optionalMemory.get();
-      System.out.println(memory);
-      System.out.println(memory.getValor());
+
       try {
         ModelExternResponsePair value = convertJsonToDto(memory.getValor());
         responsePostConsulting2.setDetail(value);
         return responsePostConsulting2;
       } catch (Exception e) {
-        System.out.println("Error al deserializar el mapa: " + e.getMessage());
+        System.out.println(Constants.ERROR_MAPA + e.getMessage());
       }
       return responsePostConsulting2;
     }
@@ -96,22 +83,14 @@ public class ExchangeRateService {
       } else {
         return null;
       }
-
     } catch (Exception e) {
       e.printStackTrace();
       return null;
     }
-
   }
-
-
-
-
-
 
   private ModelExternResponsePair convertJsonToDto(String jsonString) {
     try {
-      System.out.println("-----------------");
       if (jsonString != null && !jsonString.isEmpty()) {
         return objectMapper.readValue(jsonString, ModelExternResponsePair.class);
       } else {

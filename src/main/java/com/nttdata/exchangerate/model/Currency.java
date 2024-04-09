@@ -1,33 +1,16 @@
 package com.nttdata.exchangerate.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Currency {
     private String code;
     private String name;
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Currency{" +
-            "code='" + code + '\'' +
-            ", name='" + name + '\'' +
-            '}';
-    }
 }

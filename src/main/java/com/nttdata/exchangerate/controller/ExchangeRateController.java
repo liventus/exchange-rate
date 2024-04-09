@@ -5,6 +5,7 @@ import com.nttdata.exchangerate.dto.*;
 import com.nttdata.exchangerate.model.Currency;
 import com.nttdata.exchangerate.model.ExchangeRate;
 import com.nttdata.exchangerate.services.ExchangeRateService;
+import com.nttdata.exchangerate.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,29 +23,26 @@ public class ExchangeRateController {
     @Autowired
     private ExchangeRateService exchangeRateService;
 
-    @PostMapping("/objetos")
+    @PostMapping(Constants.POST_OBJETOS)
     public String guardarObjeto(@RequestBody ValorMemory memory) {
-
         exchangeRateService.saveExchangeRate(memory);
-        return "Objeto guardado correctamente";
+        return Constants.MESSAGE_RESPONSE_ONE;
     }
 
-    @GetMapping("/list-objetos")
+    @GetMapping(Constants.GET_OBJETOS_LIST)
     public List<Memory> getAllUsers(){
         return exchangeRateService.getAllMemory();
     }
 
 
-    @GetMapping("/api-extern")
+    @GetMapping(Constants.GET_OBJETOS_API_EXTERN)
     public Object getApiExerns(){
-
-        return exchangeRateService.getDataCurrencyString("USD");
+        return exchangeRateService.getDataCurrencyString(Constants.MESSAGE_RESPONSE_EXAMPLE);
     }
 
-    @PostMapping("/exchange-rate")
+    @PostMapping(Constants.POST_EXCHANGE)
     public ResponsePostConsulting getApiExernsExchange(
         @RequestBody ExchangeRate request){
-        System.out.println("request: "+ request);
         return exchangeRateService.getDataCurrencyAndSave(request);
     }
 

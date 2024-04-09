@@ -2,9 +2,18 @@ package com.nttdata.exchangerate.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Map;
 
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ModelExternResponse {
 
   private String result;
@@ -24,77 +33,10 @@ public class ModelExternResponse {
   @JsonProperty("conversion_rates")
   private Map<String, Double> conversionRates;
 
-  public String getResult() {
-    return result;
-  }
 
-  public void setResult(String result) {
-    this.result = result;
-  }
 
-  public String getDocumentation() {
-    return documentation;
-  }
 
-  public void setDocumentation(String documentation) {
-    this.documentation = documentation;
-  }
 
-  public String getTermsOfUse() {
-    return termsOfUse;
-  }
-
-  public void setTermsOfUse(String termsOfUse) {
-    this.termsOfUse = termsOfUse;
-  }
-
-  public long getTimeLastUpdateUnix() {
-    return timeLastUpdateUnix;
-  }
-
-  public void setTimeLastUpdateUnix(long timeLastUpdateUnix) {
-    this.timeLastUpdateUnix = timeLastUpdateUnix;
-  }
-
-  public String getTimeLastUpdateUtc() {
-    return timeLastUpdateUtc;
-  }
-
-  public void setTimeLastUpdateUtc(String timeLastUpdateUtc) {
-    this.timeLastUpdateUtc = timeLastUpdateUtc;
-  }
-
-  public long getTimeNextUpdateUnix() {
-    return timeNextUpdateUnix;
-  }
-
-  public void setTimeNextUpdateUnix(long timeNextUpdateUnix) {
-    this.timeNextUpdateUnix = timeNextUpdateUnix;
-  }
-
-  public String getTimeNextUpdateUtc() {
-    return timeNextUpdateUtc;
-  }
-
-  public void setTimeNextUpdateUtc(String timeNextUpdateUtc) {
-    this.timeNextUpdateUtc = timeNextUpdateUtc;
-  }
-
-  public String getBaseCode() {
-    return baseCode;
-  }
-
-  public void setBaseCode(String baseCode) {
-    this.baseCode = baseCode;
-  }
-
-  public Map<String, Double> getConversionRates() {
-    return conversionRates;
-  }
-
-  public void setConversionRates(Map<String, Double> conversionRates) {
-    this.conversionRates = conversionRates;
-  }
 }
 
 
