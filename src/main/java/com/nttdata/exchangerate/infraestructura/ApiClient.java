@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.math.BigDecimal;
 
-@FeignClient(name = "CURRENCY", url = "https://v6.exchangerate-api.com",configuration = FeignClientProperties.FeignClientConfiguration.class)
+@FeignClient(name = "CURRENCY", url = "${api.backend.url.base}",configuration = FeignClientProperties.FeignClientConfiguration.class)
 public interface ApiClient {
 
   String urlAll = "${api.backend.url}";
