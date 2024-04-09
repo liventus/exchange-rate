@@ -1,28 +1,28 @@
 package com.nttdata.exchangerate.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Map;
 
 public class ModelExternResponse {
 
-    public String base_code;
-    public String result;
-    public String documentation;
-    public String terms_of_use;
-    public int time_last_update_unix;
-    public String time_last_update_utc;
-    public int time_next_update_unix;
-    public String time_next_update_utc;
-
-    public Map<String,String> conversion_rates;
-
-  public Map<String, String> getConversion_rates() {
-    return conversion_rates;
-  }
-
-  public void setConversion_rates(Map<String, String> conversion_rates) {
-    this.conversion_rates = conversion_rates;
-  }
+  private String result;
+  private String documentation;
+  @JsonProperty("terms_of_use")
+  private String termsOfUse;
+  @JsonProperty("time_last_update_unix")
+  private long timeLastUpdateUnix;
+  @JsonProperty("time_last_update_utc")
+  private String timeLastUpdateUtc;
+  @JsonProperty("time_next_update_unix")
+  private long timeNextUpdateUnix;
+  @JsonProperty("time_next_update_utc")
+  private String timeNextUpdateUtc;
+  @JsonProperty("base_code")
+  private String baseCode;
+  @JsonProperty("conversion_rates")
+  private Map<String, Double> conversionRates;
 
   public String getResult() {
     return result;
@@ -40,68 +40,65 @@ public class ModelExternResponse {
     this.documentation = documentation;
   }
 
-  public String getTerms_of_use() {
-    return terms_of_use;
+  public String getTermsOfUse() {
+    return termsOfUse;
   }
 
-  public void setTerms_of_use(String terms_of_use) {
-    this.terms_of_use = terms_of_use;
+  public void setTermsOfUse(String termsOfUse) {
+    this.termsOfUse = termsOfUse;
   }
 
-  public int getTime_last_update_unix() {
-    return time_last_update_unix;
+  public long getTimeLastUpdateUnix() {
+    return timeLastUpdateUnix;
   }
 
-  public void setTime_last_update_unix(int time_last_update_unix) {
-    this.time_last_update_unix = time_last_update_unix;
+  public void setTimeLastUpdateUnix(long timeLastUpdateUnix) {
+    this.timeLastUpdateUnix = timeLastUpdateUnix;
   }
 
-  public String getTime_last_update_utc() {
-    return time_last_update_utc;
+  public String getTimeLastUpdateUtc() {
+    return timeLastUpdateUtc;
   }
 
-  public void setTime_last_update_utc(String time_last_update_utc) {
-    this.time_last_update_utc = time_last_update_utc;
+  public void setTimeLastUpdateUtc(String timeLastUpdateUtc) {
+    this.timeLastUpdateUtc = timeLastUpdateUtc;
   }
 
-  public int getTime_next_update_unix() {
-    return time_next_update_unix;
+  public long getTimeNextUpdateUnix() {
+    return timeNextUpdateUnix;
   }
 
-  public void setTime_next_update_unix(int time_next_update_unix) {
-    this.time_next_update_unix = time_next_update_unix;
+  public void setTimeNextUpdateUnix(long timeNextUpdateUnix) {
+    this.timeNextUpdateUnix = timeNextUpdateUnix;
   }
 
-  public String getTime_next_update_utc() {
-    return time_next_update_utc;
+  public String getTimeNextUpdateUtc() {
+    return timeNextUpdateUtc;
   }
 
-  public void setTime_next_update_utc(String time_next_update_utc) {
-    this.time_next_update_utc = time_next_update_utc;
+  public void setTimeNextUpdateUtc(String timeNextUpdateUtc) {
+    this.timeNextUpdateUtc = timeNextUpdateUtc;
   }
 
-  public String getBase_code() {
-    return base_code;
+  public String getBaseCode() {
+    return baseCode;
   }
 
-  public void setBase_code(String base_code) {
-    this.base_code = base_code;
+  public void setBaseCode(String baseCode) {
+    this.baseCode = baseCode;
   }
 
+  public Map<String, Double> getConversionRates() {
+    return conversionRates;
+  }
 
-
-
-  @Override
-  public String toString() {
-    return "ModelExternResponse{" +
-        "base_code='" + base_code + '\'' +
-        ", result='" + result + '\'' +
-        ", documentation='" + documentation + '\'' +
-        ", terms_of_use='" + terms_of_use + '\'' +
-        ", time_last_update_unix=" + time_last_update_unix +
-        ", time_last_update_utc='" + time_last_update_utc + '\'' +
-        ", time_next_update_unix=" + time_next_update_unix +
-        ", time_next_update_utc='" + time_next_update_utc + '\'' +
-        '}';
+  public void setConversionRates(Map<String, Double> conversionRates) {
+    this.conversionRates = conversionRates;
   }
 }
+
+
+
+
+
+

@@ -12,8 +12,8 @@ import java.math.BigDecimal;
 @FeignClient(name = "CURRENCY", url = "https://v6.exchangerate-api.com",configuration = FeignClientProperties.FeignClientConfiguration.class)
 public interface ApiClient {
 
-  String urlAll = "v6/dfa0da5d49361df81053ab7b/latest/{currency}";
-  String urlPair = "v6/dfa0da5d49361df81053ab7b/pair/{currency}/{target}/{amount}";
+  String urlAll = "${api.backend.url}";
+  String urlPair = "${api.backend.url.pair}";
 
   @GetMapping(value = urlAll,consumes = MediaType.APPLICATION_JSON_VALUE)
   Object getConversionsAll(@PathVariable("currency") String currency);

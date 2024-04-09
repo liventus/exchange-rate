@@ -7,7 +7,11 @@ public class ResponsePostConsulting {
 
   private String description;
 
-  private Map<String,Object> detail;
+  private ModelExternResponsePair detail;
+
+
+
+
 
   public String getStatus() {
     return status;
@@ -25,20 +29,11 @@ public class ResponsePostConsulting {
     this.description = description;
   }
 
-  public Map<String, Object> getDetail() {
+  public ModelExternResponsePair getDetail() {
     return detail;
   }
 
-  public void setDetail(Map<String, Object> detail) {
+  public void setDetail(ModelExternResponsePair detail) {
     this.detail = detail;
-  }
-
-  @Override
-  public String toString() {
-    return "ResponsePostConsulting{" +
-        "status='" + status + '\'' +
-        ", description='" + description + '\'' +
-        ", detail=" + detail +
-        '}';
   }
 }

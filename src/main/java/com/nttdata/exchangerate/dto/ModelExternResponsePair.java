@@ -1,23 +1,36 @@
 package com.nttdata.exchangerate.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 import java.util.Map;
 
 public class ModelExternResponsePair {
 
+  @JsonProperty("result")
+  private String result;
+  @JsonProperty("documentation")
+  private String documentation;
+  @JsonProperty("terms_of_use")
+  private String termsOfUse;
+  @JsonProperty("time_last_update_unix")
+  private long timeLastUpdateUnix;
+  @JsonProperty("time_last_update_utc")
+  private String timeLastUpdateUtc;
+  @JsonProperty("time_next_update_unix")
+  private long timeNextUpdateUnix;
+  @JsonProperty("time_next_update_utc")
+  private String timeNextUpdateUtc;
+  @JsonProperty("base_code")
+  private String baseCode;
+  @JsonProperty("target_code")
+  private String targetCode;
+  @JsonProperty("conversion_rate")
+  private double conversionRate;
+  @JsonProperty("conversion_result")
+  private double conversionResult;
 
-    public String result;
-    public String documentation;
-    public String terms_of_use;
-    public int time_last_update_unix;
-    public String time_last_update_utc;
-    public int time_next_update_unix;
-    public String time_next_update_utc;
-    public String base_code;
-    public String target_code;
-    public BigDecimal conversion_rate;
-    public BigDecimal conversion_result;
 
   public String getResult() {
     return result;
@@ -35,92 +48,92 @@ public class ModelExternResponsePair {
     this.documentation = documentation;
   }
 
-  public String getTerms_of_use() {
-    return terms_of_use;
+  public String getTermsOfUse() {
+    return termsOfUse;
   }
 
-  public void setTerms_of_use(String terms_of_use) {
-    this.terms_of_use = terms_of_use;
+  public void setTermsOfUse(String termsOfUse) {
+    this.termsOfUse = termsOfUse;
   }
 
-  public int getTime_last_update_unix() {
-    return time_last_update_unix;
+  public long getTimeLastUpdateUnix() {
+    return timeLastUpdateUnix;
   }
 
-  public void setTime_last_update_unix(int time_last_update_unix) {
-    this.time_last_update_unix = time_last_update_unix;
+  public void setTimeLastUpdateUnix(long timeLastUpdateUnix) {
+    this.timeLastUpdateUnix = timeLastUpdateUnix;
   }
 
-  public String getTime_last_update_utc() {
-    return time_last_update_utc;
+  public String getTimeLastUpdateUtc() {
+    return timeLastUpdateUtc;
   }
 
-  public void setTime_last_update_utc(String time_last_update_utc) {
-    this.time_last_update_utc = time_last_update_utc;
+  public void setTimeLastUpdateUtc(String timeLastUpdateUtc) {
+    this.timeLastUpdateUtc = timeLastUpdateUtc;
   }
 
-  public int getTime_next_update_unix() {
-    return time_next_update_unix;
+  public long getTimeNextUpdateUnix() {
+    return timeNextUpdateUnix;
   }
 
-  public void setTime_next_update_unix(int time_next_update_unix) {
-    this.time_next_update_unix = time_next_update_unix;
+  public void setTimeNextUpdateUnix(long timeNextUpdateUnix) {
+    this.timeNextUpdateUnix = timeNextUpdateUnix;
   }
 
-  public String getTime_next_update_utc() {
-    return time_next_update_utc;
+  public String getTimeNextUpdateUtc() {
+    return timeNextUpdateUtc;
   }
 
-  public void setTime_next_update_utc(String time_next_update_utc) {
-    this.time_next_update_utc = time_next_update_utc;
+  public void setTimeNextUpdateUtc(String timeNextUpdateUtc) {
+    this.timeNextUpdateUtc = timeNextUpdateUtc;
   }
 
-  public String getBase_code() {
-    return base_code;
+  public String getBaseCode() {
+    return baseCode;
   }
 
-  public void setBase_code(String base_code) {
-    this.base_code = base_code;
+  public void setBaseCode(String baseCode) {
+    this.baseCode = baseCode;
   }
 
-  public String getTarget_code() {
-    return target_code;
+  public String getTargetCode() {
+    return targetCode;
   }
 
-  public void setTarget_code(String target_code) {
-    this.target_code = target_code;
+  public void setTargetCode(String targetCode) {
+    this.targetCode = targetCode;
   }
 
-  public BigDecimal getConversion_rate() {
-    return conversion_rate;
+  public double getConversionRate() {
+    return conversionRate;
   }
 
-  public void setConversion_rate(BigDecimal conversion_rate) {
-    this.conversion_rate = conversion_rate;
+  public void setConversionRate(double conversionRate) {
+    this.conversionRate = conversionRate;
   }
 
-  public BigDecimal getConversion_result() {
-    return conversion_result;
+  public double getConversionResult() {
+    return conversionResult;
   }
 
-  public void setConversion_result(BigDecimal conversion_result) {
-    this.conversion_result = conversion_result;
+  public void setConversionResult(double conversionResult) {
+    this.conversionResult = conversionResult;
   }
 
   @Override
   public String toString() {
-    return "ModelExternResponsePair{" +
-        "result='" + result + '\'' +
-        ", documentation='" + documentation + '\'' +
-        ", terms_of_use='" + terms_of_use + '\'' +
-        ", time_last_update_unix=" + time_last_update_unix +
-        ", time_last_update_utc='" + time_last_update_utc + '\'' +
-        ", time_next_update_unix=" + time_next_update_unix +
-        ", time_next_update_utc='" + time_next_update_utc + '\'' +
-        ", base_code='" + base_code + '\'' +
-        ", target_code='" + target_code + '\'' +
-        ", conversion_rate=" + conversion_rate +
-        ", conversion_result=" + conversion_result +
+    return "{" +
+        "\"result\":\"" + result + '\"' +
+        ", \"documentation\":\"" + documentation + '\"' +
+        ", \"terms_of_use\":\"" + termsOfUse + '\"' +
+        ", \"time_last_update_unix\":" + timeLastUpdateUnix +
+        ", \"time_last_update_utc\":\"" + timeLastUpdateUtc + '\"' +
+        ", \"time_next_update_unix\":" + timeNextUpdateUnix +
+        ", \"time_next_update_utc\":\"" + timeNextUpdateUtc + '\"' +
+        ", \"base_code\":\"" + baseCode + '\"' +
+        ", \"target_code\":\"" + targetCode + '\"' +
+        ", \"conversion_rate\":" + conversionRate +
+        ", \"conversion_result\":" + conversionResult +
         '}';
   }
 }
