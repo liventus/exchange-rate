@@ -55,7 +55,7 @@ public class ExchangeRateServiceTest {
   public void getDataCurrencyAndSaveTest() {
     Optional<Memory> optionalMemory = Optional.empty();
     when(objetRepository.findById(anyString())).thenReturn(optionalMemory);
-    ModelExternResponsePair expectedResponse = new ModelExternResponsePair(/* datos de prueba */);
+    ModelExternResponsePair expectedResponse = new ModelExternResponsePair();
     when(apiClient.getConversionsPars(anyString(), anyString(), any())).thenReturn(expectedResponse);
     ExchangeRate exchangeRate = ExchangeRate
         .builder()
