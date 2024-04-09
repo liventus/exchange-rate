@@ -38,14 +38,14 @@ public class ExchangeRateServiceTest {
 
   @Test
   public void saveExchangeRateTest() {
-    ValorMemory valorMemory = new ValorMemory(/* valores de prueba */);
+    ValorMemory valorMemory = new ValorMemory();
     exchangeRateService.saveExchangeRate(valorMemory);
     verify(objetRepository).save(any(Memory.class));
   }
 
   @Test
   public void getAllMemoryTest() {
-    List<Memory> expectedMemoryList = Arrays.asList(new Memory(/* datos de prueba */));
+    List<Memory> expectedMemoryList = Arrays.asList(new Memory());
     when(objetRepository.findAll()).thenReturn(expectedMemoryList);
     List<Memory> result = exchangeRateService.getAllMemory();
     assertEquals(expectedMemoryList, result);
